@@ -1,0 +1,24 @@
+CREATE DATABASE dogaodb;
+
+CREATE TABLE clientes (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    nascimento DATE NOT NULL
+);
+
+CREATE TABLE ingredientes (
+	cod INT UNSIGNED PRIMARY KEY,
+    nome VARCHAR(100) NOT NULL,
+    valor FLOAT NOT NULL
+);
+
+CREATE TABLE produtos (
+	cod INT UNSIGNED PRIMARY KEY,
+	nome VARCHAR(100) NOT NULL,
+    valor FLOAT NOT NULL
+);
+
+CREATE TABLE estados (
+	id INT AUTO_INCREMENT PRIMARY KEY,
+    descricao VARCHAR(50) NOT NULL
+);
