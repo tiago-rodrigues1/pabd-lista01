@@ -14,7 +14,7 @@ CREATE TABLE estados (
 );
 
 CREATE TABLE tipo_pagamentos (
-	id INT  AUTO_INCREMENT PRIMARY KEY,
+	id INT AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(50) NOT NULL
 );
 
@@ -31,7 +31,7 @@ CREATE TABLE pedidos (
 );
 
 CREATE TABLE ingredientes (
-	cod INT UNSIGNED PRIMARY KEY,
+	cod INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     valor FLOAT NOT NULL
 );
@@ -53,7 +53,7 @@ CREATE TABLE cachorro_quente_ingrediente (
 );
 
 CREATE TABLE produtos (
-	cod INT UNSIGNED PRIMARY KEY,
+	cod INT AUTO_INCREMENT PRIMARY KEY,
 	nome VARCHAR(100) NOT NULL,
     valor FLOAT NOT NULL
 );
@@ -61,10 +61,9 @@ CREATE TABLE produtos (
 CREATE TABLE pedido_produto (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     pedido_numero INT NOT NULL,
-    produto_cod INT UNSIGNED NOT NULL,
+    produto_cod INT NOT NULL,
     quantidade INT NOT NULL,
     
     FOREIGN KEY (pedido_numero) REFERENCES pedidos(numero),
     FOREIGN KEY (produto_cod) REFERENCES produtos(cod)
 );
-
