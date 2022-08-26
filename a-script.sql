@@ -46,7 +46,7 @@ CREATE TABLE cachorro_quentes (
 CREATE TABLE cachorro_quente_ingrediente (
 	id INT AUTO_INCREMENT PRIMARY KEY,
     cachorro_quente_id INT NOT NULL,
-    ingrediente_cod INT UNSIGNED NOT NULL,
+    ingrediente_cod INT NOT NULL,
     
     FOREIGN KEY (cachorro_quente_id) REFERENCES cachorro_quentes(id),
     FOREIGN KEY (ingrediente_cod) REFERENCES ingredientes(cod)
