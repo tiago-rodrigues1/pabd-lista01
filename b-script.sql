@@ -79,3 +79,45 @@ INSERT INTO cachorro_quente_ingrediente (cachorro_quente_id, ingrediente_cod) VA
 INSERT INTO pedido_produto (pedido_numero, produto_cod, quantidade) VALUES
 (3, 4, 1),
 (3, 6, 1);
+
+-- vii
+UPDATE pedidos 
+SET estado_id = 3 
+WHERE cliente_id = 1;
+
+UPDATE pedidos
+SET estado_id = 2
+WHERE cliente_id = 2;
+
+-- viii
+INSERT INTO clientes (nome, nascimento) VALUES 
+('Fausto Silva', '1950-05-02');
+
+INSERT INTO pedidos (cliente_id, estado_id, data_hora) VALUES
+(3, 1, '2022-08-26 19:20:00');
+
+INSERT INTO cachorro_quentes (pedido_numero) VALUES
+(4),
+(4);
+
+INSERT INTO cachorro_quente_ingrediente (cachorro_quente_id, ingrediente_cod) VALUES
+/*1º cachorro_quente*/
+(6, 1),
+(6, 2),
+(6, 3),
+(6, 4),
+(6, 5),
+(6, 6),
+(6, 7),
+(6, 8),
+(6, 9),
+/*2º cachorro_quente*/
+(7, 2),
+(7, 4),
+(7, 6),
+(7, 8),
+(7, 9);
+
+INSERT INTO pedido_produto (pedido_numero, produto_cod, quantidade) VALUES
+(4, 3, 2),
+(4, 5 ,1);
