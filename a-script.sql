@@ -38,9 +38,9 @@ CREATE TABLE ingredientes (
 
 CREATE TABLE cachorro_quentes (
 	id INT AUTO_INCREMENT PRIMARY KEY,
-    pedido_numero INT NOT NULL,
+    pedidos_numero INT NOT NULL,
     
-    FOREIGN KEY (pedido_numero) REFERENCES pedidos(numero)
+    FOREIGN KEY (pedidos_numero) REFERENCES pedidos(numero)
 );
 
 CREATE TABLE cachorro_quente_ingrediente (
