@@ -67,7 +67,7 @@ INSERT INTO clientes (nome, nascimento) VALUES
 INSERT INTO pedidos (cliente_id, estado_id, data_hora) VALUES
 (2, 1, '2022-08-26 18:10:00');
 
-INSERT INTO cachorro_quentes (pedido_numero) VALUES 
+INSERT INTO cachorro_quentes (pedidos_numero) VALUES 
 (3);
 
 INSERT INTO cachorro_quente_ingrediente (cachorro_quente_id, ingrediente_cod) VALUES
@@ -96,7 +96,7 @@ INSERT INTO clientes (nome, nascimento) VALUES
 INSERT INTO pedidos (cliente_id, estado_id, data_hora) VALUES
 (3, 1, '2022-08-26 19:20:00');
 
-INSERT INTO cachorro_quentes (pedido_numero) VALUES
+INSERT INTO cachorro_quentes (pedidos_numero) VALUES
 (4),
 (4);
 
@@ -121,3 +121,79 @@ INSERT INTO cachorro_quente_ingrediente (cachorro_quente_id, ingrediente_cod) VA
 INSERT INTO pedido_produto (pedido_numero, produto_cod, quantidade) VALUES
 (4, 3, 2),
 (4, 5 ,1);
+
+-- ix
+UPDATE pedidos
+SET estado_id = 3
+WHERE cliente_id = 2;
+
+UPDATE pedidos
+SET estado_id = 2
+WHERE cliente_id = 3;
+
+-- x
+SELECT cliente_id, nome, SUM(subtotal) as valor_total
+FROM (
+	SELECT cliente_id, SUM(valor * quantidade) as subtotal FROM
+	pedidos INNER JOIN pedido_produto ON pedidos.numero = pedido_produto.pedido_numero
+	INNER JOIN produtos ON produtos.cod = produto_cod 
+	GROUP BY cliente_id
+	UNION
+	SELECT cliente_id, SUM(valor) as subtotal FROM
+	pedidos INNER JOIN cachorro_quentes ON cachorro_quentes.pedidos_numero = pedidos.numero
+	INNER JOIN cachorro_quente_ingrediente ON cachorro_quentes.id = cachorro_quente_id
+	INNER JOIN ingredientes ON ingredientes.cod = ingrediente_cod
+	GROUP BY cliente_id
+) as cliente_conta
+INNER JOIN clientes ON clientes.id = cliente_id
+WHERE clientes.id = 1
+GROUP BY cliente_id
+
+UNION
+
+SELECT cliente_id, nome, SUM(subtotal) as valor_total
+FROM (
+	SELECT cliente_id, SUM(valor * quantidade) as subtotal FROM
+	pedidos INNER JOIN pedido_produto ON pedidos.numero = pedido_produto.pedido_numero
+	INNER JOIN produtos ON produtos.cod = produto_cod 
+	GROUP BY cliente_id
+	UNION
+	SELECT cliente_id, SUM(valor) as subtotal FROM
+	pedidos INNER JOIN cachorro_quentes ON cachorro_quentes.pedidos_numero = pedidos.numero
+	INNER JOIN cachorro_quente_ingrediente ON cachorro_quentes.id = cachorro_quente_id
+	INNER JOIN ingredientes ON ingredientes.cod = ingrediente_cod
+	GROUP BY cliente_id
+) as cliente_conta
+INNER JOIN clientes ON clientes.id = cliente_id
+WHERE clientes.id = 2
+GROUP BY cliente_id;
+
+UPDATE pedidos
+SET tipo_pagamento_id = 3
+WHERE cliente_id = 1;
+
+UPDATE pedidos
+SET tipo_pagamento_id = 2
+WHERE cliente_id = 2;
+
+-- xi
+SELECT cliente_id, nome, SUM(subtotal) as valor_total
+FROM (
+	SELECT cliente_id, SUM(valor * quantidade) as subtotal FROM
+	pedidos INNER JOIN pedido_produto ON pedidos.numero = pedido_produto.pedido_numero
+	INNER JOIN produtos ON produtos.cod = produto_cod 
+	GROUP BY cliente_id
+	UNION
+	SELECT cliente_id, SUM(valor) as subtotal FROM
+	pedidos INNER JOIN cachorro_quentes ON cachorro_quentes.pedidos_numero = pedidos.numero
+	INNER JOIN cachorro_quente_ingrediente ON cachorro_quentes.id = cachorro_quente_id
+	INNER JOIN ingredientes ON ingredientes.cod = ingrediente_cod
+	GROUP BY cliente_id
+) as cliente_conta
+INNER JOIN clientes ON clientes.id = cliente_id
+WHERE clientes.id = 3
+GROUP BY cliente_id;
+
+UPDATE pedidos
+SET tipo_pagamento_id = 2
+WHERE cliente_id = 3;
