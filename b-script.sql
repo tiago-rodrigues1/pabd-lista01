@@ -68,17 +68,17 @@ INSERT INTO pedidos (cliente_id, estado_id, data_hora) VALUES
 (2, 1, '2022-08-26 18:10:00');
 
 INSERT INTO cachorro_quentes (pedidos_numero) VALUES 
-(3);
+(2);
 
 INSERT INTO cachorro_quente_ingrediente (cachorro_quente_id, ingrediente_cod) VALUES
-(5, 4),
-(5, 3),
-(5, 5),
-(5, 8);
+(2, 4),
+(2, 3),
+(2, 5),
+(2, 8);
 
 INSERT INTO pedido_produto (pedido_numero, produto_cod, quantidade) VALUES
-(3, 4, 1),
-(3, 6, 1);
+(2, 4, 1),
+(2, 6, 1);
 
 -- vii
 UPDATE pedidos 
@@ -97,30 +97,30 @@ INSERT INTO pedidos (cliente_id, estado_id, data_hora) VALUES
 (3, 1, '2022-08-26 19:20:00');
 
 INSERT INTO cachorro_quentes (pedidos_numero) VALUES
-(4),
-(4);
+(3),
+(3);
 
 INSERT INTO cachorro_quente_ingrediente (cachorro_quente_id, ingrediente_cod) VALUES
 /*1º cachorro_quente*/
-(6, 1),
-(6, 2),
-(6, 3),
-(6, 4),
-(6, 5),
-(6, 6),
-(6, 7),
-(6, 8),
-(6, 9),
+(4, 1),
+(4, 2),
+(4, 3),
+(4, 4),
+(4, 5),
+(4, 6),
+(4, 7),
+(4, 8),
+(4, 9),
 /*2º cachorro_quente*/
-(7, 2),
-(7, 4),
-(7, 6),
-(7, 8),
-(7, 9);
+(5, 2),
+(5, 4),
+(5, 6),
+(5, 8),
+(5, 9);
 
 INSERT INTO pedido_produto (pedido_numero, produto_cod, quantidade) VALUES
-(4, 3, 2),
-(4, 5 ,1);
+(3, 3, 2),
+(3, 5 ,1);
 
 -- ix
 UPDATE pedidos
