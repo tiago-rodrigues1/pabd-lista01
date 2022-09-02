@@ -10,7 +10,7 @@ SELECT * FROM clientes
 WHERE MONTH(nascimento) BETWEEN 3 AND 5;
 
 -- iii
-SELECT numero, nome, SUM(subtotal) as total FROM (
+SELECT numero, nome, SUM(subtotal) FROM (
 	SELECT numero, cliente_id, SUM(produtos.valor * quantidade) as subtotal FROM
 	pedidos INNER JOIN pedido_produto ON pedido_numero = pedidos.numero
 	INNER JOIN produtos ON produtos.cod = produto_cod
