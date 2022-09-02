@@ -132,7 +132,7 @@ SET estado_id = 2
 WHERE cliente_id = 3;
 
 -- x
-SELECT cliente_id, nome, SUM(subtotal) as valor_total
+SELECT cliente_id, nome, SUM(subtotal)
 FROM (
 	SELECT cliente_id, SUM(valor * quantidade) as subtotal FROM
 	pedidos INNER JOIN pedido_produto ON pedidos.numero = pedido_produto.pedido_numero
